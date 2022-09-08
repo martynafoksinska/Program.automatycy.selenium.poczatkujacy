@@ -52,6 +52,7 @@ public class C_Locators {
         /** Wybierz opcję */
         // Zlokalizuj radio przyciski z wyborem opcji, używając "className"
         WebElement optionRadioButtonsByClassName = driver.findElement(By.className("option"));
+        WebElement numbersRadioButtons = driver.findElement(By.className("number"));
 
         driver.quit();
     }
@@ -63,6 +64,7 @@ public class C_Locators {
 
         // Zlokalizuj sekcję strony używając "tagName"
         WebElement sectionByTagName = driver.findElement(By.tagName("section"));
+        WebElement footer = driver.findElement(By.tagName("footer"));
 
         driver.quit();
     }
@@ -86,6 +88,9 @@ public class C_Locators {
         // Zlokalizuj link do polityki prywatności po url używając "cssSelector"
         WebElement linkByCssUrl = driver.findElement(By.cssSelector("a[href='https://programautomatycy.pl/privacy-policy/'"));
 
+        WebElement coloursFullClassName = driver.findElement(By.cssSelector("select[class='wpcf7-form-control wpcf7-select colour']"));
+        WebElement coloursClassName = driver.findElement(By.cssSelector(".colour"));
+        WebElement coloursId = driver.findElement(By.cssSelector("#colour-select-multiple"));
         driver.quit();
     }
 
@@ -96,10 +101,11 @@ public class C_Locators {
 
         // Sleep jest zastosowany tylko w ramach treningu
         // Metody Sleep nie powinno się używać w docelowych projektach
-        Thread.sleep(1000);
+        // Sleep zamieniony na webdriverwait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(200, 1));
         /** Wybierz ulubiony dzień tygodnia */
         // Zlokalizuj wartość "Poniedziałek" w polu rozwijanym używając pełnego "xpath"
-        WebElement dayDropBoxByXpathFull = driver.findElement(By.xpath("/html/body/div[2]/div/div/section/div[2]/div/main/article/div/div/div/div/section/div/div/div[1]/div/div/div[2]/div/div/div/form/p[8]/span/select/option[2]"));
+        WebElement dayDropBoxByXpathFull = driver.findElement(By.xpath("//*[@id='day-select']/option[2]"));
 
         /** Wybierz ulubiony dzień tygodnia */
         // Zlokalizuj wartość "Poniedziałek" w polu rozwijanym używając skróconego "xpath"
@@ -118,6 +124,9 @@ public class C_Locators {
         // Zlokalizuj link do polityki prywatności po tekście używając "xpath"
         WebElement linkByXpathText = driver.findElement(By.xpath("//*[text()='polityka prywatności']"));
 
+        WebElement number3 = driver.findElement(By.xpath("//*[@id='number-radio']/span[3]"));
+        WebElement greenColour = driver.findElement(By.xpath("//*[@id='colour-select-multiple']"));
+
         driver.quit();
     }
 
@@ -133,6 +142,8 @@ public class C_Locators {
         // Możemy w ten sposób wyszukać grupę elementów dla wszystkich metod findElements
         // Poniżej przykład z xpath. Wyszuka wszyskie elementy z typem checkbox
         List<WebElement> checkboxes = driver.findElements(By.xpath("//*[@type='checkbox']"));
+
+        List<WebElement> options = driver.findElements(By.tagName("option"));
 
         driver.quit();
     }
