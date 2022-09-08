@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class F_CheckElements {
@@ -22,58 +24,62 @@ public class F_CheckElements {
 
         WebDriver driver = getDriver();
 
-        /** Wpisz imię */
-        WebElement firstNameFieldById = driver.findElement(By.id("firstname-text"));
-        System.out.println("Czy pierwsze imię jest edytowalne?: " + firstNameFieldById.isEnabled());
+//        /** Wpisz imię */
+//        WebElement firstNameFieldById = driver.findElement(By.id("firstname-text"));
+//        System.out.println("Czy pierwsze imię jest edytowalne?: " + firstNameFieldById.isEnabled());
+//
+//        /** Wpisz imię */
+//        WebElement secondNameFieldById = driver.findElement(By.id("secondname-text"));
+//        System.out.println("Czy drugie imię jest edytowalne?: " + secondNameFieldById.isEnabled());
+//
+//        /** Nieedytowalny checkbox */
+//        WebElement disabledCheckBoxById = driver.findElement(By.id("disabled-checkbox"));
+//        System.out.println("Czy checkbox jest edytowalny?: " + disabledCheckBoxById.isEnabled());
+//
+//        /** Nieedytowalne pole tekstowe */
+//        WebElement disabledTextFieldById = driver.findElement(By.id("disabled-text"));
+//        System.out.println("Czy pole tekstowe jest edytowalne?: " + disabledTextFieldById.isEnabled());
+//
+//        System.out.println("#################################################");
+//
+//        /** Wpisz imię */
+//        WebElement firstNameFieldByIdGetAttribute = driver.findElement(By.id("firstname-text"));
+//        System.out.println("Pierwsze imię jest edytowalne: " + firstNameFieldByIdGetAttribute.getAttribute("disabled"));
+//
+//        /** Wpisz imię */
+//        WebElement secondNameFieldByIdGetAttribute = driver.findElement(By.id("secondname-text"));
+//        System.out.println("Drugie imię jest edytowalne: " + secondNameFieldByIdGetAttribute.getAttribute("disabled"));
+//
+//        /** Nieedytowalny checkbox */
+//        WebElement disabledCheckBoxByIdGetAttribute = driver.findElement(By.id("disabled-checkbox"));
+//        System.out.println("Checkbox jest edytowalny: " + disabledCheckBoxByIdGetAttribute.getAttribute("disabled"));
+//
+//        /** Nieedytowalne pole tekstowe */
+//        WebElement disabledTextFieldByIdGetAttribute = driver.findElement(By.id("disabled-text"));
+//        System.out.println("Pole tekstowe jest edytowalne: " + disabledTextFieldByIdGetAttribute.getAttribute("disabled"));
 
-        /** Wpisz imię */
-        WebElement secondNameFieldById = driver.findElement(By.id("secondname-text"));
-        System.out.println("Czy drugie imię jest edytowalne?: " + secondNameFieldById.isEnabled());
-
-        /** Nieedytowalny checkbox */
-        WebElement disabledCheckBoxById = driver.findElement(By.id("disabled-checkbox"));
-        System.out.println("Czy checkbox jest edytowalny?: " + disabledCheckBoxById.isEnabled());
-
-        /** Nieedytowalne pole tekstowe */
-        WebElement disabledTextFieldById = driver.findElement(By.id("disabled-text"));
-        System.out.println("Czy pole tekstowe jest edytowalne?: " + disabledTextFieldById.isEnabled());
-
-        System.out.println("#################################################");
-
-        /** Wpisz imię */
-        WebElement firstNameFieldByIdGetAttribute = driver.findElement(By.id("firstname-text"));
-        System.out.println("Pierwsze imię jest edytowalne: " + firstNameFieldByIdGetAttribute.getAttribute("disabled"));
-
-        /** Wpisz imię */
-        WebElement secondNameFieldByIdGetAttribute = driver.findElement(By.id("secondname-text"));
-        System.out.println("Drugie imię jest edytowalne: " + secondNameFieldByIdGetAttribute.getAttribute("disabled"));
-
-        /** Nieedytowalny checkbox */
-        WebElement disabledCheckBoxByIdGetAttribute = driver.findElement(By.id("disabled-checkbox"));
-        System.out.println("Checkbox jest edytowalny: " + disabledCheckBoxByIdGetAttribute.getAttribute("disabled"));
-
-        /** Nieedytowalne pole tekstowe */
-        WebElement disabledTextFieldByIdGetAttribute = driver.findElement(By.id("disabled-text"));
-        System.out.println("Pole tekstowe jest edytowalne: " + disabledTextFieldByIdGetAttribute.getAttribute("disabled"));
+        WebElement bookTitleById = driver.findElement(By.id("book-text"));
+        System.out.println("Czy pole tytuł książki jest edytowalne?: " + bookTitleById.isEnabled());
 
         driver.quit();
     }
 
     @Test
-    public void elementIsDisplayed() throws InterruptedException {
+    public void elementIsDisplayed() {
 
         WebDriver driver = getDriver();
-        Thread.sleep(1000);
-        /** Wpisz imię */
-        WebElement firstNameFieldById = driver.findElement(By.id("firstname-text"));
-        System.out.println("Imię jest wyświetlone na stronie: " + firstNameFieldById.isDisplayed());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(200, 1));
+//        /** Wpisz imię */
+//        WebElement firstNameFieldById = driver.findElement(By.id("firstname-text"));
+//        System.out.println("Imię jest wyświetlone na stronie: " + firstNameFieldById.isDisplayed());
+//
+//
+//        /** Wpisz nazwisko */
+//        WebElement lastNameFieldByName = driver.findElement(By.name("your-lastname"));
+//        System.out.println("Nazwisko jest wyświetlone na stronie: " + lastNameFieldByName.isDisplayed());
 
-        // Sleep jest zastosowany tylko w ramach treningu
-        // Metody Sleep nie powinno się używać w docelowych projektach
-
-        /** Wpisz nazwisko */
-        WebElement lastNameFieldByName = driver.findElement(By.name("your-lastname"));
-        System.out.println("Nazwisko jest wyświetlone na stronie: " + lastNameFieldByName.isDisplayed());
+        WebElement movieTitleFieldById = driver.findElement(By.id("movie-text"));
+        System.out.println("Pole tytuł filmu jest wyświetlone na stronie: " + movieTitleFieldById.isDisplayed());
 
         driver.quit();
     }
@@ -104,7 +110,7 @@ public class F_CheckElements {
         System.out.println("########################### - Pętla");
         List<WebElement> optionsRadioButtonsByClassName = driver.findElements(By.xpath("//*[@id='option-radio']//input"));
 
-        for (WebElement option:optionsRadioButtonsByClassName){
+        for (WebElement option : optionsRadioButtonsByClassName) {
             System.out.println("Czy " + option.getAttribute("value") + " jest wybrana?: " + option.isSelected());
         }
 
