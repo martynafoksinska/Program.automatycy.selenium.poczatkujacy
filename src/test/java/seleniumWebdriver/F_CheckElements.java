@@ -89,66 +89,82 @@ public class F_CheckElements {
 
         WebDriver driver = getDriver();
 
-        // Poniższa linia akceptuje pobieranie ciasteczek
-        // Możesz zakomentować tę część i nie godzić się na pobieranie ciasteczek, ale wtedy nie będą działały niektóre polecenia na stronie
+
         driver.findElement(By.id("cn-accept-cookie")).click();
 
-        /** Wybierz opcję */
         WebElement optionRadioButtonsByClassName = driver.findElement(By.id("option-radio"));
-        WebElement option1ByXpath = optionRadioButtonsByClassName.findElement(By.xpath("//input[@value='Opcja 1']"));
-        option1ByXpath.click();
-        System.out.println("###########################");
-
-        System.out.println("Czy Opcja 1 jest wybrana?: " + option1ByXpath.isSelected());
-
-        WebElement option2ByXpath = optionRadioButtonsByClassName.findElement(By.xpath("//input[@value='Opcja 2']"));
-        System.out.println("Czy Opcja 2 jest wybrana?: " + option2ByXpath.isSelected());
 
         WebElement option3ByXpath = optionRadioButtonsByClassName.findElement(By.xpath("//input[@value='Opcja 3']"));
+        option3ByXpath.click();
         System.out.println("Czy Opcja 3 jest wybrana?: " + option3ByXpath.isSelected());
 
-        System.out.println("########################### - Pętla");
-        List<WebElement> optionsRadioButtonsByClassName = driver.findElements(By.xpath("//*[@id='option-radio']//input"));
+        WebElement colourSelectOptionByClassName = driver.findElement(By.id("colour-select-multiple"));
 
-        for (WebElement option : optionsRadioButtonsByClassName) {
-            System.out.println("Czy " + option.getAttribute("value") + " jest wybrana?: " + option.isSelected());
-        }
+        WebElement greenColour = colourSelectOptionByClassName.findElement(By.xpath("//*[@id='colour-select-multiple']/option[3]"));
+        greenColour.click();
+        System.out.println("Czy kolor zielony jest wybrany?: " + greenColour.isSelected());
 
-        /** Wybierz ulubiony dzień tygodnia */
-        WebElement dayDropBoxByXpath = driver.findElement(By.xpath("//*[@id='day-select']/option[2]"));
-        dayDropBoxByXpath.click();
-        System.out.println("###########################");
-        System.out.println("Czy wybrany jest poniedziałek?: " + dayDropBoxByXpath.isSelected());
+        driver.quit();
+    }
 
-        /** Wybierz przeglądarkę */
-        WebElement browserSelectOptionByXpath = driver.findElement(By.xpath("//*[@id='browser-select-multiple']/option[1]"));
-        browserSelectOptionByXpath.click();
-        System.out.println("###########################");
-        System.out.println("Czy wybrany jest Google Chrome?: " + browserSelectOptionByXpath.isSelected());
 
-        /** Zgadzam się z polityką prywatności - polityka prywatności */
-        WebElement policyRadioButtonsByXpath = driver.findElement(By.xpath("//*[@id='wpcf7-f9259-p9257-o1']//input[@value='Tak']"));
-        policyRadioButtonsByXpath.click();
-        System.out.println("###########################");
-        System.out.println("Czy wybrana jest odpowiedź 'Tak'?: " + policyRadioButtonsByXpath.isSelected());
 
-        /** Zaznacz wszystkie pola z literą "C" */
-        WebElement cLetterFirstCheckBoxById = driver.findElement(By.name("c1[]"));
-        cLetterFirstCheckBoxById.click();
-        WebElement cLetterSecondCheckBoxById = driver.findElement(By.name("c2[]"));
-        cLetterSecondCheckBoxById.click();
-        System.out.println("###########################");
-        System.out.println("Czy pierwsza litera C jest zaznaczona?: " + cLetterFirstCheckBoxById.isSelected());
-        System.out.println("Czy druga litera C jest zaznaczona?: " + cLetterSecondCheckBoxById.isSelected());
-
-        /** Wybierz grupę */
-        WebElement groupCheckboxByXpath = driver.findElement(By.xpath("//*[@id='group-checkbox']//*[@value='Grupa 2']"));
-        groupCheckboxByXpath.click();
-        System.out.println("###########################");
-        System.out.println("Czy zaznaczona jest Grupa 2?: " + groupCheckboxByXpath.isSelected());
+//        /** Wybierz opcję */
+//        WebElement optionRadioButtonsByClassName = driver.findElement(By.id("option-radio"));
+//        WebElement option1ByXpath = optionRadioButtonsByClassName.findElement(By.xpath("//input[@value='Opcja 1']"));
+//        option1ByXpath.click();
+//        System.out.println("###########################");
+//
+//        System.out.println("Czy Opcja 1 jest wybrana?: " + option1ByXpath.isSelected());
+//
+//        WebElement option2ByXpath = optionRadioButtonsByClassName.findElement(By.xpath("//input[@value='Opcja 2']"));
+//        System.out.println("Czy Opcja 2 jest wybrana?: " + option2ByXpath.isSelected());
+//
+//        WebElement option3ByXpath = optionRadioButtonsByClassName.findElement(By.xpath("//input[@value='Opcja 3']"));
+//        System.out.println("Czy Opcja 3 jest wybrana?: " + option3ByXpath.isSelected());
+//
+//        System.out.println("########################### - Pętla");
+//        List<WebElement> optionsRadioButtonsByClassName = driver.findElements(By.xpath("//*[@id='option-radio']//input"));
+//
+//        for (WebElement option : optionsRadioButtonsByClassName) {
+//            System.out.println("Czy " + option.getAttribute("value") + " jest wybrana?: " + option.isSelected());
+//        }
+//
+//        /** Wybierz ulubiony dzień tygodnia */
+//        WebElement dayDropBoxByXpath = driver.findElement(By.xpath("//*[@id='day-select']/option[2]"));
+//        dayDropBoxByXpath.click();
+//        System.out.println("###########################");
+//        System.out.println("Czy wybrany jest poniedziałek?: " + dayDropBoxByXpath.isSelected());
+//
+//        /** Wybierz przeglądarkę */
+//        WebElement browserSelectOptionByXpath = driver.findElement(By.xpath("//*[@id='browser-select-multiple']/option[1]"));
+//        browserSelectOptionByXpath.click();
+//        System.out.println("###########################");
+//        System.out.println("Czy wybrany jest Google Chrome?: " + browserSelectOptionByXpath.isSelected());
+//
+//        /** Zgadzam się z polityką prywatności - polityka prywatności */
+//        WebElement policyRadioButtonsByXpath = driver.findElement(By.xpath("//*[@id='wpcf7-f9259-p9257-o1']//input[@value='Tak']"));
+//        policyRadioButtonsByXpath.click();
+//        System.out.println("###########################");
+//        System.out.println("Czy wybrana jest odpowiedź 'Tak'?: " + policyRadioButtonsByXpath.isSelected());
+//
+//        /** Zaznacz wszystkie pola z literą "C" */
+//        WebElement cLetterFirstCheckBoxById = driver.findElement(By.name("c1[]"));
+//        cLetterFirstCheckBoxById.click();
+//        WebElement cLetterSecondCheckBoxById = driver.findElement(By.name("c2[]"));
+//        cLetterSecondCheckBoxById.click();
+//        System.out.println("###########################");
+//        System.out.println("Czy pierwsza litera C jest zaznaczona?: " + cLetterFirstCheckBoxById.isSelected());
+//        System.out.println("Czy druga litera C jest zaznaczona?: " + cLetterSecondCheckBoxById.isSelected());
+//
+//        /** Wybierz grupę */
+//        WebElement groupCheckboxByXpath = driver.findElement(By.xpath("//*[@id='group-checkbox']//*[@value='Grupa 2']"));
+//        groupCheckboxByXpath.click();
+//        System.out.println("###########################");
+//        System.out.println("Czy zaznaczona jest Grupa 2?: " + groupCheckboxByXpath.isSelected());
 
         //driver.quit();
-    }
+
 
     @Test
     public void elementExists() {
@@ -156,21 +172,21 @@ public class F_CheckElements {
         WebDriver driver = getDriver();
 
         /** Napisz coś */
-        List<WebElement> descriptionTextByCss = driver.findElements(By.cssSelector("#description-text"));
-        if (descriptionTextByCss.size() > 0) {
+        List<WebElement> descriptionTextByxpath = driver.findElements(By.xpath("//*[@id='text-text']"));
+        if (descriptionTextByxpath.size() > 0) {
             System.out.println("Pole tekstowe istnieje");
         } else {
             System.out.println("Pole tekstowe nie istnieje");
         }
 
-        // Nie istniejący element na stronie
-        List<WebElement> fakeElementById = driver.findElements(By.id("nieznane"));
-        if (fakeElementById.size() > 0) {
-            System.out.println("Element istnieje");
-        } else {
-            System.out.println("Element nie istnieje");
-        }
-
-        driver.quit();
+//        // Nie istniejący element na stronie
+//        List<WebElement> fakeElementById = driver.findElements(By.id("nieznane"));
+//        if (fakeElementById.size() > 0) {
+//            System.out.println("Element istnieje");
+//        } else {
+//            System.out.println("Element nie istnieje");
+//        }
+//
+//        driver.quit();
     }
 }
