@@ -20,14 +20,20 @@ public class G_SelectClass_SingleOption {
 
         WebDriver driver = getDriver();
 
-        /** Wybierz ulubiony dzień tygodnia */
-        // Tworzymy nowy obiekt Select o nazwie dayDropBoxByXpath
-        // Musimy przekazać WebElement czyli: driver.findElement(By.xpath("//*[@id='day-select']")) jako parametr.
-        Select dayDropBoxByXpath = new Select(driver.findElement(By.xpath("//*[@id='day-select']")));
-        // Wybierz opcję za pomocą tekstu
-        dayDropBoxByXpath.selectByVisibleText("Wtorek");
-        // Wyświetl pierwszą widoczną opcję
-        System.out.println(dayDropBoxByXpath.getFirstSelectedOption().getText());
+        driver.findElement(By.id("cn-accept-cookie")).click();
+
+        Select colourDropBoxByXpath = new Select(driver.findElement(By.xpath("//*[@id='animal-select']")));
+        colourDropBoxByXpath.selectByValue("Chomik");
+        System.out.println(colourDropBoxByXpath.getFirstSelectedOption().getText());
+
+//        /** Wybierz ulubiony dzień tygodnia */
+//        // Tworzymy nowy obiekt Select o nazwie dayDropBoxByXpath
+//        // Musimy przekazać WebElement czyli: driver.findElement(By.xpath("//*[@id='day-select']")) jako parametr.
+//        Select dayDropBoxByXpath = new Select(driver.findElement(By.xpath("//*[@id='day-select']")));
+//        // Wybierz opcję za pomocą tekstu
+//        dayDropBoxByXpath.selectByVisibleText("Wtorek");
+//        // Wyświetl pierwszą widoczną opcję
+//        System.out.println(dayDropBoxByXpath.getFirstSelectedOption().getText());
 
         driver.quit();
     }
@@ -36,6 +42,8 @@ public class G_SelectClass_SingleOption {
     public void selectSingleOptionByValue() {
 
         WebDriver driver = getDriver();
+
+        driver.findElement(By.id("cn-accept-cookie")).click();
 
         /** Wybierz ulubiony dzień tygodnia */
         Select dayDropBoxByXpath = new Select(driver.findElement(By.xpath("//*[@id='day-select']")));
@@ -49,6 +57,8 @@ public class G_SelectClass_SingleOption {
     public void selectSingleOptionByIndex() {
 
         WebDriver driver = getDriver();
+
+        driver.findElement(By.id("cn-accept-cookie")).click();
 
         /** Wybierz ulubiony dzień tygodnia */
         Select dayDropBoxByXpath = new Select(driver.findElement(By.xpath("//*[@id='day-select']")));

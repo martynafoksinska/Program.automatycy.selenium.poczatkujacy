@@ -43,57 +43,69 @@ public class H_SelectClass_MultipleOptions {
 
         WebDriver driver = getDriver();
 
-        Select browserMultipleField = new Select(driver.findElement(By.id("browser-select-multiple")));
+        Select browserMultipleFieldColour = new Select(driver.findElement(By.id("colour-select-multiple")));
 
-        // Wybieramy dwie opcje
-        browserMultipleField.selectByVisibleText("Google Chrome");
-        browserMultipleField.selectByVisibleText("Mozilla Firefox");
-
-        // Pobieramy wszystkie zaznaczone przeglądarki
-        List<WebElement> browsers = browserMultipleField.getAllSelectedOptions();
-
-        // Wyświetl w pętli wybrane przeglądarki
-        for (WebElement browser : browsers) {
-            System.out.println(browser.getText());
+        browserMultipleFieldColour.selectByValue("Czarny");
+        browserMultipleFieldColour.selectByVisibleText("Zielony");
+        browserMultipleFieldColour.selectByIndex(1);
+        List<WebElement> colours = browserMultipleFieldColour.getAllSelectedOptions();
+        for (WebElement colour : colours) {
+            System.out.println(colour.getText());
         }
 
-        driver.quit();
+
+//        Select browserMultipleField = new Select(driver.findElement(By.id("browser-select-multiple")));
+//
+//        // Wybieramy dwie opcje
+//        browserMultipleField.selectByVisibleText("Google Chrome");
+//        browserMultipleField.selectByVisibleText("Mozilla Firefox");
+//
+//        // Pobieramy wszystkie zaznaczone przeglądarki
+//        List<WebElement> browsers = browserMultipleField.getAllSelectedOptions();
+//
+//        // Wyświetl w pętli wybrane przeglądarki
+//        for (WebElement browser : browsers) {
+//            System.out.println(browser.getText());
+//        }
+//
+//        driver.quit();
     }
 
-    @Test
-    public void selectMultipleOptionsAndDeselectSome() {
+        @Test
+        public void selectMultipleOptionsAndDeselectSome () {
 
-        WebDriver driver = getDriver();
+            WebDriver driver = getDriver();
 
-        Select browserMultipleField = new Select(driver.findElement(By.id("browser-select-multiple")));
+            Select browserMultipleField = new Select(driver.findElement(By.id("browser-select-multiple")));
 
-        // Wybierz opcję, używając widocznego tekstu
-        browserMultipleField.selectByVisibleText("Google Chrome");
-        browserMultipleField.selectByVisibleText("Microsoft Edge");
+            // Wybierz opcję, używając widocznego tekstu
+            browserMultipleField.selectByVisibleText("Google Chrome");
+            browserMultipleField.selectByVisibleText("Microsoft Edge");
 
-        // Wybierz opcję, używając jej wartości
-        browserMultipleField.selectByValue("Opera");
-        browserMultipleField.selectByValue("Internet Explorer");
+            // Wybierz opcję, używając jej wartości
+            browserMultipleField.selectByValue("Opera");
+            browserMultipleField.selectByValue("Internet Explorer");
 
-        // Wyświetl w pętli wybrane przeglądarki
-        List<WebElement> browsers = browserMultipleField.getAllSelectedOptions();
-        for (WebElement browser : browsers) {
-            System.out.println(browser.getText());
+            // Wyświetl w pętli wybrane przeglądarki
+            List<WebElement> browsers = browserMultipleField.getAllSelectedOptions();
+            for (WebElement browser : browsers) {
+                System.out.println(browser.getText());
+            }
+
+            System.out.println("####################");
+
+            // Odznacz opcję, używając widocznego tekstu
+            browserMultipleField.deselectByVisibleText("Opera");
+            // Odznacz opcję, używając wartości
+            browserMultipleField.deselectByValue("Google Chrome");
+
+            // Wyświetl w pętli pozostałe przeglądarki
+            browsers = browserMultipleField.getAllSelectedOptions();
+            for (WebElement browser : browsers) {
+                System.out.println(browser.getText());
+            }
+
+            driver.quit();
         }
 
-        System.out.println("####################");
-
-        // Odznacz opcję, używając widocznego tekstu
-        browserMultipleField.deselectByVisibleText("Opera");
-        // Odznacz opcję, używając wartości
-        browserMultipleField.deselectByValue("Google Chrome");
-
-        // Wyświetl w pętli pozostałe przeglądarki
-        browsers = browserMultipleField.getAllSelectedOptions();
-        for (WebElement browser : browsers) {
-            System.out.println(browser.getText());
-        }
-
-        driver.quit();
     }
-}
