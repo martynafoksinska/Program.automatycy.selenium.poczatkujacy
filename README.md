@@ -1,4 +1,4 @@
 # Program.automatycy.selenium.poczatkujacy
-Ćwiczenia z automatyzacji testów aplikacji webowych za pomocą Selenium WebDriver w Java
+Ćwiczenia z kursu Automatyzacja testów: Selenium WebDriver Java od podstaw/
 
 https://programautomatycy.pl/test-page/
